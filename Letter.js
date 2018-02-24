@@ -1,45 +1,35 @@
-var Letter = function(char) {
+var Letter = function(char, word) {
 
     this.char = char;
+    this.word = word;
     this.guessed = false;
 
-    this.getLetter = function() {
+    var display = " ";
 
-        if (this.guessed) {
+    this.compareLetter = function() {
 
-            console.log(this.char);
-           // Letter.prototype.toString = function() {
-             //   var greeting = 'My letter is ' + this.char;
-            //return greeting;
-            // }
-        } else {
-            this.char = "_";
-            console.log(this.char);
-            return this.char;
+        for (var i in word) {
+
+            if (word[i] === char) {
+                this.guessed = true;
+                display += word[i];
+
+            } else {
+                this.guessed = false;
+                display += " _ ";
+
+            }
         }
-    };
-
-    this.guessLetter = function() {
-
-        var letterToGuess = process.argv[2];
-        //console.log(letterToGuess);
-
-        if (letterToGuess === char) {
-
-            this.guessed = true;
-            this.getLetter();
-
-        } else {
-            this.guessed = false;
-            this.getLetter();
-        }
-
+        console.log(display);
     }
-
 };
 
 module.exports = Letter;
 
-//var example = new Letter('a');
-//console.log(example.char);
-//example.guessLetter();
+
+/*
+var example = new Letter('o', 'albino');
+console.log(example.char);
+example.compareLetter();
+console.log(example.guessed);
+*/

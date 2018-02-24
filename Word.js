@@ -1,27 +1,34 @@
 var Letter = require("./Letter");
 
-var Word = function(lettersArray) {
 
-    this.lettersArray = [];
-    this.wordArray = new Array();
+var Word = function(selectedWord, letter) {
+    console.log(selectedWord);
+    this.letter = letter;
+    this.selectedWord = selectedWord;
+    this.wordArray = [];
 
     this.formWord = function() {
 
-        for (var i in lettersArray) {
 
-            var letterInWord = new Letter(lettersArray[i]);
-            letterInWord.guessLetter();
-            //console.log(letterInWord.guessLetter());
-            this.wordArray.push(letterInWord.guessLetter());
-            console.log(this.wordArray.join());
-            
+        for (var i in selectedWord) {
+
+            //console.log(selectedWord[i]);
+
+            this.letter = new Letter(selectedWord[i]);
+
+            //console.log(letterInWord.char);
+            this.letter.compareLetter();
+
+            this.wordArray.push(letterInWord.char);
 
         }
-
+        console.log(this.wordArray);
     }
-
-
 }
 
-var ex = new Word(['w','o','r','d']);
+
+module.exports = Word;
+/*
+var ex = new Word("example");
 ex.formWord();
+*/
