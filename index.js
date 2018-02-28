@@ -47,16 +47,11 @@ function promptLetter() {
             for (var i in randomWord) {
 
                 if (inputLetter === randomWord[i]) {
-                    //randomWord[i] = inputLetter;
-
-                    var index = randomWord.indexOf(randomWord[i]);
-                    randomWord[i] = inputLetter;
-
 
                     show += randomWord[i];
                     guessesRemaining--;
                     console.log("You guessed a letter! You have " + guessesRemaining + " left");
-                    console.log(randomWord);
+                    console.log(show);
 
 
                 } else {

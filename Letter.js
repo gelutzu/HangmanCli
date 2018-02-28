@@ -1,26 +1,29 @@
-var Letter = function(char, word) {
+var Letter = function(char) {
 
     this.char = char;
-    this.word = word;
     this.guessed = false;
 
-    var display = " ";
 
-    this.compareLetter = function() {
 
-        for (var i in word) {
+    this.checkLetter = function(userLetter) {
 
-            if (word[i] === char) {
-                this.guessed = true;
-                display += word[i];
-
-            } else {
-                this.guessed = false;
-                display += " _ ";
-
-            }
+        if (this.char === userLetter) {
+            this.guessed = true;
+            return true;
+        } else {
+            this.guessed = false;
+            return false;
         }
-        console.log(display);
+    }
+
+    this.toString = function() {
+
+        if (this.guessed) {
+            return this.char;
+
+        } else {
+            return " _ ";
+        }
     }
 };
 
@@ -28,8 +31,7 @@ module.exports = Letter;
 
 
 /*
-var example = new Letter('o', 'albino');
-console.log(example.char);
-example.compareLetter();
-console.log(example.guessed);
+var example = new Letter("x");
+example.checkLetter("x");
+console.log(example.toString());
 */
